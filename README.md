@@ -1,2 +1,4 @@
 # HerbertV1
-Free FE bypass using Secret Service Panel and CheatBuddy RC7 API (with serverside API support)
+Herbert is a FREE FE bypass that 100% works! It also replicates the client!
+
+JOIN THE DISCORD SERVER FOR UPDATES: https://discord.gg/ZhZRyaru88
