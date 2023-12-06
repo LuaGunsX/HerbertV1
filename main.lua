@@ -165,6 +165,53 @@ TextButton8.TextWrapped = true
 LocalScript9.Parent = TextButton8
 table.insert(cors,sandbox(LocalScript9,function()
 script.Parent.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "executing hub, if it doesn't work go take a break";
+		Duration = 3;
+	})
+	wait(2)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "cracking synapse x";
+		Duration = 2;
+	})
+	wait(2)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "bribing the rose hub creator to help";
+		Duration = 3;
+	})
+	wait(3)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "bribing roblox and byfron to help";
+		Duration = 3;
+	})
+	wait(3)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "oh no a NAZI MOD BANNED YOU!";
+		Duration = 3;
+	})
+	wait(2)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "bypassing FE";
+		Duration = 3;
+	})
+	wait(3)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "using rune because netflixce is shit";
+		Duration = 3;
+	})
+	wait(2)
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "EXECUTED!";
+		Duration = 3;
+	})
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaGunsX/HerbertV1/main/hub%20/hub.lua", true))()
 end)
 end))
@@ -190,6 +237,29 @@ TextButton10.TextWrapped = true
 LocalScript11.Parent = TextButton10
 table.insert(cors,sandbox(LocalScript11,function()
 script.Parent.MouseButton1Click:connect(function()
+game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "executing rose hub, if it doesn't work go take a break";
+		Duration = 3;
+	})
+	wait(2)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "cracking synapse x";
+		Duration = 2;
+	})
+	wait(2)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "bribing the rose hub creator to help";
+		Duration = 3;
+	})
+	wait(3)
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "HUBERT";
+		Text = "done lmao";
+		Duration = 3;
+	})
 	loadstring(game:HttpGet("https://pastebin.com/raw/9q2nraUs", true))()
 end)
 end))
