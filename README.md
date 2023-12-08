@@ -13,6 +13,19 @@ Loadstring for Cheat Engine: loadstring(game:HttpGet("https://raw.githubusercont
 * KRNL
 * RC7 (old client)
 * NOPDE Engine
-* Script-Ware
+* Script-Ware (including iOS)
 * Fluxus
 * Arceus X
+* WeAreDevs API
+* Evon
+* Oxygen U
+* Dansploit
+* MoonWare
+* Comet
+* Celery
+* Valyse
+* Kiwi X
+* Hydrogen
+* Shadow
+* ProtoSmasher (new client)
+* ProtoSmasher (old client)
