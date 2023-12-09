@@ -260,7 +260,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 		Text = "done lmao";
 		Duration = 3;
 	})
-	loadstring(game:HttpGet("https://pastebin.com/raw/9q2nraUs", true))()
+	loadstring(game:HttpGet("https://fyle.uk/file/fphxL", true))()
 end)
 end))
 TextLabel12.Parent = Frame3
