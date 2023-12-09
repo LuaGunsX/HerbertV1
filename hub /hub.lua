@@ -131,6 +131,14 @@ Section:NewButton("Nebula Hub", "ButtonInfo", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/fHGzkgyU", true))()
 end)
 
+Section:NewButton("Nae Nae", "ButtonInfo", function()
+    loadstring(game:HttpGet("https://files.catbox.moe/dwlll4.txt", true))()
+end)
+
+Section:NewButton("iOrb 2.0", "ButtonInfo", function()
+    loadstring(game:HttpGet("https://files.catbox.moe/uhtmgb.lua", true))()
+end)
+
 --// GAME SCRIPTS TAB \\--
 
 local Tab = Window:NewTab("Game Scripts")
