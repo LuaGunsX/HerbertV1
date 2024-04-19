@@ -32,3 +32,6 @@ Internet Archive Mirror: loadstring(game:HttpGet("https://archive.org/download/m
 * Shadow
 * ProtoSmasher (new client)
 * ProtoSmasher (old client)
+* SuperRobloxHacker
+* Bloxstrap
+* Roblox FPS Unlocker
