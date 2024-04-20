@@ -1,5 +1,5 @@
 # HerbertV1
-Herbert is a FREE FE bypass that 100% works! It also replicates the client!
+Herbert is a FREE FE bypass that 100% works! It also replicates the client! I have to make this clear; this is just a shitpost script of course.
 
 JOIN THE DISCORD SERVER FOR UPDATES: https://discord.gg/ZhZRyaru88
 
