@@ -26,6 +26,9 @@ Internet Archive Mirror: loadstring(game:HttpGet("https://archive.org/download/m
 * MoonWare
 * Comet
 * Celery
+* Solara
+* Electron
+* Delta
 * Valyse
 * Kiwi X
 * Hydrogen
@@ -35,3 +38,5 @@ Internet Archive Mirror: loadstring(game:HttpGet("https://archive.org/download/m
 * SuperRobloxHacker
 * Bloxstrap
 * Roblox FPS Unlocker
+* Roblox Studio Mod Manager
+* Extreme Injector v3
