@@ -27,7 +27,6 @@ Internet Archive Mirror: loadstring(game:HttpGet("https://archive.org/download/m
 * Comet
 * Celery
 * Solara
-* Electron
 * Delta
 * Valyse
 * Kiwi X
