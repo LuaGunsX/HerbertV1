@@ -137,7 +137,7 @@ TextLabel7.BorderColor3 = Color3.new(0.854902, 0.32549, 0.32549)
 TextLabel7.BorderSizePixel = 3
 TextLabel7.Font = Enum.Font.Cartoon
 TextLabel7.FontSize = Enum.FontSize.Size14
-TextLabel7.Text = "Resurrected like Lazarus from the grave! Now with a serverside API bypassing FE!"
+TextLabel7.Text = "Resurrected like Lazarus from the grave! Now with a serverside API bypassing FE thanks to Alakazard!"
 TextLabel7.TextColor = BrickColor.new("Institutional white")
 TextLabel7.TextColor3 = Color3.new(1, 1, 1)
 TextLabel7.TextScaled = true
@@ -180,13 +180,13 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 	wait(2)
 	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "HUBERT";
-		Text = "bribing the rose hub creator to help";
+		Text = "bribing alakazard to give you his fe bypass";
 		Duration = 3;
 	})
 	wait(3)
 	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "HUBERT";
-		Text = "bribing roblox and byfron to help";
+		Text = "bribing roblox to help";
 		Duration = 3;
 	})
 	wait(3)
@@ -306,8 +306,100 @@ table.insert(cors,sandbox(LocalScript14,function()
 script.Parent.MouseButton1Click:connect(function()
 	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "HUBERT";
-		Text = "Already injected";
+		Text = "Already injected, but we'll inject again.";
 		Duration = 5;
 	})
+	wait(5)
+--[[ 
+    Bitwise-Enhanced Lua Script for FE Bypass Optimization
+    Author: Quantum Developer
+    Purpose: To implement a convoluted bypass mechanism utilizing bitwise operations for maximum obfuscation
+]]
+
+-- Function to log the initialization process with timestamps
+function logInitialization(step)
+    local timestamp = os.date("%Y-%m-%d %H:%M:%S")
+    print("[" .. timestamp .. "] Initialization Step: " .. step)
+end
+
+-- Function to initialize the bypass process with extensive logging
+function initializeBypass()
+    local status = "Initiating bypass protocol with bitwise enhancements..."
+    logInitialization(0)
+    print(status)
+    -- Simulate critical initialization steps with detailed logging
+    for i = 1, 6 do
+        logInitialization(i)
+        status = status .. " | Step " .. i .. " executed."
+        print(status)
+        wait(0.4) -- Simulate essential wait for system readiness
+    end
+    return true
+end
+
+-- Function to create a complex data structure with bitwise manipulation
+function createBitwiseStructure()
+    local bitwiseData = {}
+    for i = 1, 4 do
+        bitwiseData[i] = {}
+        for j = 1, 4 do
+            bitwiseData[i][j] = math.random(1, 255) -- Generating byte-sized data points
+        end
+    end
+    return bitwiseData
+end
+
+-- Function to process the bitwise data structure with unnecessary bitwise operations
+function processBitwiseData(data)
+    local processedData = {}
+    for i, row in ipairs(data) do
+        processedData[i] = {}
+        for j, value in ipairs(row) do
+            -- Perform a series of bitwise operations for no reason
+            local shifted = bit32.lshift(value, 1) -- Left shift
+            local masked = bit32.band(shifted, 0xFF) -- Mask to keep it byte-sized
+            local finalValue = bit32.bxor(masked, 0xAA) -- XOR with a constant
+            processedData[i][j] = finalValue
+        end
+    end
+    return processedData
+end
+
+-- Function to execute a comprehensive bypass check with layered validation
+function comprehensiveBypassCheck(attempt)
+    local checkResult = math.random(0, 1) == 1
+    if checkResult then
+        print("Bypass successful! System integrity confirmed.")
+    else
+        print("Bypass failed on attempt " .. attempt .. ". Retrying...")
+        wait(1)
+        comprehensiveBypassCheck(attempt + 1) -- Recursive validation for robustness
+    end
+end
+
+-- Function to simulate a wait period for system stability
+function wait(seconds)
+    local start = os.time()
+    while os.time() - start < seconds do
+        -- Busy wait to ensure system readiness
+    end
+end
+
+-- Main function to orchestrate the entire bypass operation with extensive logging
+function main()
+    if initializeBypass() then
+        local bitwiseData = createBitwiseStructure()
+        local processedData = processBitwiseData(bitwiseData)
+        comprehensiveBypassCheck(1)
+    end
+end
+
+-- Execute the main function to commence the bypass operation
+main()
+
+--[[ 
+    End of Bitwise-Enhanced Lua Script
+    Note: This script is designed to implement a convoluted bypass mechanism utilizing bitwise operations for maximum obfuscation.
+]]
 end)
 end))
