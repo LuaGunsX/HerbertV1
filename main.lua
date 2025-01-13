@@ -310,96 +310,125 @@ script.Parent.MouseButton1Click:connect(function()
 		Duration = 5;
 	})
 	wait(5)
---[[ 
-    Bitwise-Enhanced Lua Script for FE Bypass Optimization
-    Author: Quantum Developer
-    Purpose: To implement a convoluted bypass mechanism utilizing bitwise operations for maximum obfuscation
-]]
+        -- // FE Bypach by Perdika copyright 2024.. do not steal.. \\
 
--- Function to log the initialization process with timestamps
-function logInitialization(step)
-    local timestamp = os.date("%Y-%m-%d %H:%M:%S")
-    print("[" .. timestamp .. "] Initialization Step: " .. step)
+print("[PerdikaRCE]: Attempting to bypass FE..")
+local network = game:GetService("NetworkClient")
+local oldNet = network:FindFirstChild("ReplicationSettings")
+if oldNet then
+	oldNet:Destroy() -- delete roblox's default replication settings
 end
 
--- Function to initialize the bypass process with extensive logging
-function initializeBypass()
-    local status = "Initiating bypass protocol with bitwise enhancements..."
-    logInitialization(0)
-    print(status)
-    -- Simulate critical initialization steps with detailed logging
-    for i = 1, 6 do
-        logInitialization(i)
-        status = status .. " | Step " .. i .. " executed."
-        print(status)
-        wait(0.4) -- Simulate essential wait for system readiness
-    end
-    return true
+function generateAuthTicket(plr)
+	local ticketSeed = (game.PlaceId * game.GameId) - (plr.UserId % math.clamp(game.CreatorId, 1,(plr.UserId/2)))
+	math.randomseed(ticketSeed)
+
+	local authTicket = "!RBLX_".. Version():gsub("%.","-") .. "_AUTH:"
+	local chars = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"}
+
+	for i = 1, 56 do
+		authTicket ..= chars[math.random(#chars)]
+	end
+
+	print("[PerdikaRCE]: Generated auth ticket " .. authTicket)
+	return authTicket
 end
 
--- Function to create a complex data structure with bitwise manipulation
-function createBitwiseStructure()
-    local bitwiseData = {}
-    for i = 1, 4 do
-        bitwiseData[i] = {}
-        for j = 1, 4 do
-            bitwiseData[i][j] = math.random(1, 255) -- Generating byte-sized data points
-        end
-    end
-    return bitwiseData
+local authTicket = generateAuthTicket(game:GetService("Players").LocalPlayer)
+local enabled = Enum.ReplicateInstanceDestroySetting.Enabled.Value
+local perdika = Instance.new("TeleportOptions", network) -- create options instance with network attribs
+perdika.Name = "ReplicationSettings"
+perdika:SetAttribute("InstanceDestroyReplicated", enabled)
+perdika:SetAttribute("InstanceCreationReplicated", enabled)
+perdika:SetAttribute("InstanceChangesReplicated", enabled)
+perdika:SetAttribute("InstancePropertiesReplicated", enabled)
+perdika:SetAttribute("AuthTicket", authTicket)
+
+function constructPacket(name, id, auth, data, ttl)
+	local packet = {
+		"RAKNET", "RAKUDP",
+		name, id, auth, data, ttl, "HIGH_PRIORITY", "RELIABLE",
+	}
+	return game:GetService("HttpService"):JSONEncode(packet)
 end
 
--- Function to process the bitwise data structure with unnecessary bitwise operations
-function processBitwiseData(data)
-    local processedData = {}
-    for i, row in ipairs(data) do
-        processedData[i] = {}
-        for j, value in ipairs(row) do
-            -- Perform a series of bitwise operations for no reason
-            local shifted = bit32.lshift(value, 1) -- Left shift
-            local masked = bit32.band(shifted, 0xFF) -- Mask to keep it byte-sized
-            local finalValue = bit32.bxor(masked, 0xAA) -- XOR with a constant
-            processedData[i][j] = finalValue
-        end
-    end
-    return processedData
+-- Set changes
+local res, success = pcall(function()
+	local plr = game:GetService("Players").LocalPlayer
+	setreadonly(plr.ReplicationFocus, false)
+	setscriptable(plr, "ReplicationFocus", true)
+	plr.ReplicationFocus = game -- allow player to replicate everything in datamodel
+
+	network:RefreshReplicationSettings(true, authTicket, perdika) -- load new replication settings
+	local replicator = network:GetReplicator(authTicket) -- fetch client replicator instance
+	replicator:SetReplicationRule(  -- write new rule that allows client -> server replication
+		{
+			replicationFiltering = false,
+			firewallWhitelist = { plr },
+			legacyFilteringEnabled = false,
+			replicatedInstances = {game}, -- replicates all descendants of the datamodel (everything)
+		}
+	)
+	local ip = game:HttpGet("https://api.ipify.org/?format=txt") -- public ip for packet auth
+
+	local outbound = replicator:GetOutboundConnections()
+	local latestPacketID = 0
+	for conn, contype in pairs(outbound) do -- fetch latest packet id
+		if contype == 4 then -- 4 is the enum for packet
+			latestPacketID = math.max(latestPacketID, conn.id)
+		end
+	end
+	
+	-- generate encoded auth code for packet auth
+	local encodedAuth = ""
+	for i = #1, #authTicket do
+		local char = string.sub(authTicket, i, i)
+		encodedAuth ..= string.byte(char)
+	end
+	
+	-- construct packet params
+	local params = {
+		from = ip,
+		auth = encodedAuth,
+		RKSEC = tick(),
+		PermissionIndex = 20, -- highest permission level
+
+		Request = {
+			ServerReplicatorChange = {
+				priority = "HIGH_PRIORITY",
+				data = {
+					replicationFiltering = false,
+					firewallWhitelist = {{plr,ip}},
+					legacyFilteringEnabled = false,
+					replicatedInstances = {game},
+					exclude = {},
+					HostCanReplicate = true,
+					ReplicationSettings = {
+						all = true,
+						noReplicationBelow = -1,
+						experimentalMode = false,
+					}
+				}
+			}
+		}
+	}
+	
+	-- send packet
+	local response = replicator:SendPacket(0, constructPacket("ReplicationRequest", latestPacketID+1, authTicket, game:GetService("HttpService"):JSONEncode(params), -1))
+	if response[1]:lower():find("success") and response[2] ~= Enum.ConnectionError.ReplicatorTimeout then
+		perdika.RobloxLocked = true
+		return true
+	else
+		print("[PerdikaRCE]: Packet failed.")
+		return false
+	end
+end)
+
+-- check if request successful
+if success then
+	print("[PerdikaRCE]: FE Bypassed.")
+else
+	print("[PerdikaRCE]: FE Bypass failed. Please try again.")
 end
-
--- Function to execute a comprehensive bypass check with layered validation
-function comprehensiveBypassCheck(attempt)
-    local checkResult = math.random(0, 1) == 1
-    if checkResult then
-        print("Bypass successful! System integrity confirmed.")
-    else
-        print("Bypass failed on attempt " .. attempt .. ". Retrying...")
-        wait(1)
-        comprehensiveBypassCheck(attempt + 1) -- Recursive validation for robustness
-    end
-end
-
--- Function to simulate a wait period for system stability
-function wait(seconds)
-    local start = os.time()
-    while os.time() - start < seconds do
-        -- Busy wait to ensure system readiness
-    end
-end
-
--- Main function to orchestrate the entire bypass operation with extensive logging
-function main()
-    if initializeBypass() then
-        local bitwiseData = createBitwiseStructure()
-        local processedData = processBitwiseData(bitwiseData)
-        comprehensiveBypassCheck(1)
-    end
-end
-
--- Execute the main function to commence the bypass operation
-main()
-
---[[ 
-    End of Bitwise-Enhanced Lua Script
-    Note: This script is designed to implement a convoluted bypass mechanism utilizing bitwise operations for maximum obfuscation.
-]]
 end)
 end))
