@@ -432,3 +432,30 @@ else
 end
 end)
 end))
+
+local Players = game:GetService("Players")
+local RespawnTime = 5
+
+local function simulateRespawnDelay(player)
+    if player == Players.LocalPlayer then return end
+    player.CharacterAdded:Connect(function(character)
+        local humanoid = character:WaitForChild("Humanoid", 5)
+        if humanoid then
+            humanoid.Died:Connect(function()
+                wait(RespawnTime)
+                if character and character.Parent then
+                    character:Destroy()
+                    wait(RespawnTime)
+                    local newCharacter = Instance.new("Model")
+                    newCharacter.Parent = workspace
+                end
+            end)
+        end
+    end)
+end
+
+for _, player in pairs(Players:GetPlayers()) do
+    simulateRespawnDelay(player)
+end
+
+Players.PlayerAdded:Connect(simulateRespawnDelay)
