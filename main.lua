@@ -1,6 +1,6 @@
 -- // FE Bypach by Perdika copyright 2024.. do not steal.. \\
 
-print("[PerdikaRCE]: Attempting to bypass FE..")
+print("[Herbert]: Attempting to bypass FE..")
 local network = game:GetService("NetworkClient")
 local oldNet = network:FindFirstChild("ReplicationSettings")
 if oldNet then
@@ -18,7 +18,7 @@ function generateAuthTicket(plr)
 		authTicket ..= chars[math.random(#chars)]
 	end
 
-	print("[PerdikaRCE]: Generated auth ticket " .. authTicket)
+	print("[Herbert]: Generated auth ticket " .. authTicket)
 	return authTicket
 end
 
@@ -107,14 +107,14 @@ local res, success = pcall(function()
 		perdika.RobloxLocked = true
 		return true
 	else
-		print("[PerdikaRCE]: Packet failed.")
+		print("[Herbert]: Packet failed.")
 		return false
 	end
 end)
 
 -- check if request successful
 if success then
-	print("[PerdikaRCE]: FE Bypassed.")
+	print("[Herbert]: FE Bypassed.")
 else
-	print("[PerdikaRCE]: FE Bypass failed. Please try again.")
+	print("[Herbert]: FE Bypass failed. Please try again.")
 end
