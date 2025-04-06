@@ -1,4 +1,4 @@
--- // FE Bypach by Perdika copyright 2024.. do not steal.. \\
+-- // FE Bypach by Perdika copyright 2025.. do not steal.. \\
 
 print("[Herbert]: Attempting to bypass FE..")
 local network = game:GetService("NetworkClient")
