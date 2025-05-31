@@ -20,3 +20,7 @@ Loadstring: loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaGunsX/
 * JJSploit
 * VegaX
 * Mint
+* Cheat Engine
+* Art Money
+* x64dbg
+* Binary Ninja
