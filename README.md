@@ -5,22 +5,8 @@ JOIN THE DISCORD SERVER FOR UPDATES: https://discord.gg/j4S7mdGXfT
 
 Loadstring: loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaGunsX/HerbertV1/main/main.lua", true))()
 # Supported Executors
-* Shave
-* Delta
-* Wave
-* Solara
-* Nihon
-* Fluxus
-* Seliware
-* AWP.gg
-* Synapse Z
-* Xeno
-* Zorara
-* Apple-Ware
-* JJSploit
-* VegaX
-* Mint
 * Cheat Engine
 * Art Money
 * x64dbg
 * Binary Ninja
+* A Pringles can
